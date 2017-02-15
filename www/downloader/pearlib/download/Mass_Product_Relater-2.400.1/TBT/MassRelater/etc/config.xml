@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<config>
+  <modules>
+    <TBT_MassRelater>
+      <version>2.400.1</version>
+    </TBT_MassRelater>
+  </modules>
+  
+    <!-- 
+    If you want to overload an admin-controller this tag should be <admin> instead,
+    or <adminhtml> if youre overloading such stuff (?)
+    -->
+    <admin>
+        <routers>
+            <massrelater>
+                <!-- should be set to "admin" when overloading admin stuff (?) -->
+                <use>admin</use>
+                <args>
+                    <module>TBT_MassRelater</module>
+                    <!-- This is used when "catching" the rewrite above -->
+                    <frontName>massrelater</frontName>
+                </args>
+            </massrelater>
+        </routers>
+    </admin>
+
+  <global>
+    <blocks>
+      <massrelater>
+        <class>TBT_MassRelater_Block</class>
+      </massrelater>
+    </blocks>
+    <helpers>
+        <massrelater>
+            <class>TBT_MassRelater_Helper</class>
+        </massrelater>
+    </helpers>
+    <blocks>
+      <enhancedgrid>
+        <rewrite>
+          <catalog_product_grid>TBT_MassRelater_Block_Catalog_Product_Grid</catalog_product_grid>
+        </rewrite>
+      </enhancedgrid>
+    </blocks>
+    
+    <!-- Relate Stuff -->
+    <rewrite>
+        <tbt_massrelater_catalog_product_eg>
+            <from><![CDATA[#^/enhancedgrid/catalog_product/((mass.*))/$#]]></from>
+            <to>/massrelater/catalog_product/${1}/</to>
+        </tbt_massrelater_catalog_product_eg>
+    </rewrite>
+    <rewrite>
+        <tbt_massrelater_catalog_product>
+            <from><![CDATA[#^/adminhtml/catalog_product/((mass.*))/$#]]></from>
+            <to>/massrelater/catalog_product/${1}/</to>
+        </tbt_massrelater_catalog_product>
+    </rewrite>
+
+    </global>
+  
+    <adminhtml>
+        <layout>
+            <updates>
+                <TBT_MassRelater>
+                    <file>tbt_massrelater.xml</file>
+                </TBT_MassRelater>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    <default>
+        <enhancedgrid>
+            <massrelater>
+                <isenabled>1</isenabled>
+                <enablerelation>1</enablerelation>
+                <enablecrosssell>1</enablecrosssell>
+                <enableupsell>1</enableupsell>
+            </massrelater>
+        </enhancedgrid>
+    </default>
+    
+
+    <adminhtml>
+        <acl>
+          <resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+            <admin>
+              <children>
+                  <system>
+                      <children>
+                        <config>
+                          <children>
+                            <massrelater>
+                              <title>TBT - Mass Product Relater</title>
+                            </massrelater>
+                          </children>
+                        </config>
+                      </children>
+                  </system>
+              </children>
+            </admin>
+          </resources>
+        </acl>
+    </adminhtml>
+</config> 

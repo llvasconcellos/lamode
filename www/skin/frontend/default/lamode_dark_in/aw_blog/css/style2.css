@@ -1,0 +1,212 @@
+.postWrapper {
+clear:both;
+margin-right:0;
+padding-bottom:25px;
+}
+.postTitle { 
+    background: url("../images/posttitle.png") repeat scroll right bottom transparent;
+    color: #FFFFFF;
+    font-family: Georgia,Arial,Tahoma;
+    font-size: 24px;
+    font-style: italic;
+    margin: 0 0 15px;
+    padding: 5px 10px;
+	float:left;
+	width:544px;
+}
+
+.postTitle h2 {
+	font-size: 26px;
+	/*font-weight: bold;*/
+	margin: 0px;
+	padding: 0px;
+	color:#FFF;
+	font-weight:bold;
+}
+.postTitle h3 {
+    color: #FFFFFF;
+    font-family: Arial,Tahoma;
+    font-size: 10px;
+    font-style: normal;
+    margin: 0;
+    padding: 2px 0;
+}
+.postContent {
+	padding-bottom: 10px;
+}
+.postContent a, .postWrapper a {
+	color:#FB2008;
+}
+.postDetails {
+	float: left;
+    width: 100%;
+}
+.postBookmarks {
+	padding-bottom: 10px;
+}
+.postBookmarks h4 {
+	
+	font-size: 12px;
+	font-weight: bold;
+}
+.commentWrapper {
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+	width: 100%;
+}
+.commentContent {
+    background: none repeat scroll 0 0 #F3F3F3;
+    padding: 10px;
+}
+.commentDetails  {
+	margin-bottom:5px;
+	padding: 0px;
+}
+.commentDetails  h4.username{
+	display:inline;
+	color:#FB2008;
+}
+
+.postError {
+	font-size: 16px;
+}
+
+.tags{
+	font-weight:bold;
+	padding-bottom: 10px;
+	float:left;
+}
+ul.tags{
+margin-left:10px;
+}
+
+.tags UL{
+	display:inline;
+}
+.tags UL LI{
+font-weight:normal;
+	display:inline;
+	padding-right:6px;
+}
+
+
+.tags h4 {
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 2px 0 0 !important;
+    padding: 0;
+}
+
+.menu-tags, .menu-categories, .menu-recent{
+    background: url("../images/col-top.png") no-repeat scroll left top transparent;
+    float: left;
+    margin: 10px 0;
+    padding: 0;
+    width: 175px;
+}
+
+.blog .menu-tags UL LI{
+	display:inline;
+	padding:2px;
+	margin-left:10px;
+}
+.blog .menu-categories UL LI{
+background:url("../images/blog-arrow.png") no-repeat scroll left center transparent;
+padding:3px 0 3px 10px;
+}
+.blog .content h5 {
+    border-bottom: 1px dotted #CCCCCC;
+    color: #200C71;
+    font-family: Trebuchet MS;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-transform: lowercase;
+}
+.blog .menu-recent UL LI{
+background:url("../images/blog-arrow.png") no-repeat scroll left center transparent;
+padding:3px 0 3px 10px;
+}
+.menu-categories a, .menu-recent a {
+	text-decoration:none;
+}
+.menu-categories a:hover, .menu-recent a:hover {
+	text-decoration:underline;
+}
+.tagcloud, .menu-categories ul {
+    background: url("../images/col-btn.png") no-repeat scroll left bottom transparent;
+    margin-bottom: -10px;
+    padding: 10px;
+}
+.tag-count-1{
+	font-size:1em;
+}
+.tag-count-2{
+	font-size:1.2em;
+}
+.tag-count-3{
+	font-size:1.4em;
+}
+.tag-count-4{
+	font-size:1.6em;
+}
+.tag-count-5{
+	font-size:1.8em;
+}
+.tag-count-6{
+	font-size:2em;
+}
+.tag-count-7{
+	font-size:2em;
+}
+.tag-count-8{
+	font-size:2em;
+}
+.tag-count-9{
+	font-size:2em;
+}
+.tag-count-10{
+	font-size:2em;
+}
+
+.blog .head h4{
+padding-left: 20px;
+}
+
+.blog .head h4 {
+background-image:url(../images/icon_blog.png);
+background-repeat:no-repeat;
+color:#000;
+}
+
+.postWrapper .poster{
+	display:inline;
+}
+.postTitle h2 a {
+	text-decoration:none;
+	color:#FFF;
+}
+form#postComment {
+	float:left;
+}
+.titlecomment {
+	margin-top:20px;
+}
+.titlecomment h2 {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.postWrapper .share {
+width:544px;
+}
+.postWrapper .share .addthis_toolbox {
+    float: left;
+    width: 292px;
+}

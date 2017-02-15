@@ -1,0 +1,26 @@
+<?php
+if(Mage::getStoreConfig('easy_tabs/custom/customtabid4')){
+	$atributos = Mage::getStoreConfig('easy_tabs/custom/customtabid4');
+	$content = '';
+	if(preg_match('/\;/', $atributos)){
+		$atributos = explode(';', $atributos);
+		foreach($atributos as $atributo){
+			$method = 'get' . ucfirst($atributo);
+			$temp = $this->getProduct()->$method();
+			if(strlen($temp)>0){
+				if($atributo == 'composicao') $content .= 'Composição: ';
+				elseif($atributo == 'material') $content .= 'Material: ';
+				elseif($atributo == 'medidas') $content .= 'Medidas: ';
+				$content .= $temp . '<br />';
+			}
+		}
+	}
+	else {
+		$method = 'get' . ucfirst($atributos);
+		$content .= ($this->getProduct()->$method());
+	}
+	if(!empty($content)){
+		echo '<div class="product-specs">'.$content.'</div>';
+	}
+}
+?>

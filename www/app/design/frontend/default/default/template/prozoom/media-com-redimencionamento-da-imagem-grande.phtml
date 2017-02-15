@@ -1,0 +1,146 @@
+
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $main_img = '';
+    $thumb_image_size = array(56, 56);
+    $small_image_size = array(265, 365);
+?>
+<?php
+	if ($_product->getImage() != 'no_selection' && $_product->getImage()):
+    						
+		$_imageModel = Mage::getModel('catalog/product_image');
+        $_imageModel->setDestinationSubdir('large');
+        $_imageModel->setBaseFile($_product->getImage());
+		
+		$_imageWidth = $_imageModel->getImageProcessor()->getOriginalWidth();
+        $_imageHeight = $_imageModel->getImageProcessor()->getOriginalHeight();
+		
+		
+		if ($_imageHeight > $_imageWidth)
+        {
+        	$fator_proporcao = $_imageHeight/$small_image_size[1];
+			$width = round($small_image_size[0] * $fator_proporcao);
+			$_imageModel->setWidth($width);
+            $_imageModel->setHeight($_imageHeight);
+        }
+        else
+        {
+            $fator_proporcao = $_imageWidth/$small_image_size[0];
+			$height = round($small_image_size[1] * $fator_proporcao);
+			$_imageModel->setWidth($_imageWidth);
+            $_imageModel->setHeight($height);
+		}
+		
+		
+        
+        $_imageModel->resize();
+        $_imageUrl = $_imageModel->saveFile()->getUrl();
+
+    ?>
+    <a href="<?php echo $_imageUrl; ?>" onclick="return false" class="prozoom-image" title="<?php echo $this->htmlEscape($_product->getImageLabel())?>">
+        <?php 
+        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($small_image_size[0], $small_image_size[1]).'" alt="'.$this->htmlEscape($_product->getImageLabel()).'" title="'.$this->htmlEscape($_product->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+        ?>
+    </a>
+<?php else: 
+    $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($small_image_size[0], $small_image_size[1]).'" alt="'.$this->htmlEscape($_product->getImageLabel()).'" title="'.$this->htmlEscape($_product->getImageLabel()).'" />';
+    echo $_helper->productAttribute($_product, $_img, 'image');
+endif; ?>
+<span class="zoom_info">Passe o mouse para obter zoom </span>
+<?php if (count($this->getGalleryImages()) > 1): ?>
+<div class="more-views">
+    <ul class="more-views-list">
+        <?php
+        $i = 0;
+        foreach ($this->getGalleryImages() as $_image):
+			
+			$_imageModel = Mage::getModel('catalog/product_image');
+            $_imageModel->setDestinationSubdir('large');
+            $_imageModel->setBaseFile($_image->getFile());
+			
+			$_imageWidth = $_imageModel->getImageProcessor()->getOriginalWidth();
+            $_imageHeight = $_imageModel->getImageProcessor()->getOriginalHeight();
+			
+			
+			if ($_imageHeight > $_imageWidth)
+            {
+            	$fator_proporcao = $_imageHeight/$small_image_size[1];
+				$width = round($small_image_size[0] * $fator_proporcao);
+				$_imageModel->setWidth($width);
+                $_imageModel->setHeight($_imageHeight);
+            }
+            else
+            {
+                $fator_proporcao = $_imageWidth/$small_image_size[0];
+				$height = round($small_image_size[1] * $fator_proporcao);
+				$_imageModel->setWidth($_imageWidth);
+                $_imageModel->setHeight($height);
+			}
+			
+			
+            
+            $_imageModel->resize();
+            $_imageUrl = $_imageModel->saveFile()->getUrl();
+			
+            $cur_img = $this->helper('catalog/image')->init($_product, 'image', $_image->getFile());
+        ?>
+            <li class="<?php echo $main_img == $cur_img->__toString() ? 'active' : '' ?>">
+                <a class="prozoom-small-image" onclick="return false" href="<?php echo $_imageUrl ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+                    <img class="small-image" 
+                        style="display: none;" 
+                        src="<?php echo $cur_img->resize($small_image_size[0], $small_image_size[1]) ?>"
+                        alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" 
+                        title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"
+                    />
+                    <img src="<?php echo $cur_img->resize($thumb_image_size[0], $thumb_image_size[1]) ?>" 
+                        alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" 
+                        title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>
+
+<?php $_prozoomConfig = Mage::getStoreConfig('prozoom') ?> 
+
+<script type="text/javascript">
+function initProzoom(){
+    new Prozoom('a.prozoom-image', {
+        zoomType:       "<?php echo $_prozoomConfig['general']['zoomType'] ?>",
+        imageOpacity:   <?php echo $_prozoomConfig['general']['imageOpacity'] ?>,
+        alwaysOn:       <?php echo (int)$_prozoomConfig['general']['alwaysOn'] ?>,
+        preloadImages:  <?php echo (int)$_prozoomConfig['general']['preloadImages'] ?>,
+        showPreload:    <?php echo (int)$_prozoomConfig['general']['showPreload'] ?>,
+        preloadText:    "<?php echo $_prozoomConfig['general']['preloadText'] ?>",
+        observeClick:   <?php echo (int)$_prozoomConfig['general']['observeClick'] ?>,
+        lens:           <?php echo (int)$_prozoomConfig['lens']['enabled'] ?>,
+        lensCursor:     "<?php echo $_prozoomConfig['lens']['cursor'] ?>",
+        lensCursorSm:   "<?php echo $_prozoomConfig['lens']['cursorSmall'] ?>",
+        lensReset:      <?php echo (int)$_prozoomConfig['lens']['reset'] ?>,
+        lensOpacity:    <?php echo $_prozoomConfig['lens']['opacity'] ?>,
+        position:       "<?php echo $_prozoomConfig['stage']['position'] ?>",
+        zoomWidth:      <?php echo (int)$_prozoomConfig['stage']['width'] ?>,
+        zoomHeight:     <?php echo (int)$_prozoomConfig['stage']['height'] ?>,
+        xOffset:        <?php echo (int)$_prozoomConfig['stage']['xOffset'] ?>,
+        yOffset:        <?php echo (int)$_prozoomConfig['stage']['yOffset'] ?>,
+        title:          <?php echo (int)$_prozoomConfig['stage']['showTitle'] ?>,
+        showEffect:     "<?php echo $_prozoomConfig['stage']['showEffect'] ?>",
+        hideEffect:     "<?php echo $_prozoomConfig['stage']['hideEffect'] ?>",
+        showSpeed:      <?php echo $_prozoomConfig['stage']['showSpeed'] ?>,
+        hideSpeed:      <?php echo $_prozoomConfig['stage']['hideSpeed'] ?>
+    });
+}
+if (Prototype.Browser.IE) {
+    Event.observe(window, 'load', function(){ //KB927917 fix
+        initProzoom();
+    });
+} else {
+    document.observe("dom:loaded", function(){
+        initProzoom();
+    });
+}
+</script>

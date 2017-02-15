@@ -1,0 +1,8 @@
+a:14:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.release";s:18:"xsi:schemaLocation";s:81:"http://pear.php.net/dtd/rest.release     http://pear.php.net/dtd/rest.release.xsd";}s:1:"p";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/p/aw_blog";}s:8:"_content";s:7:"AW_Blog";}s:1:"c";s:37:"connect.magentocommerce.com/community";s:1:"v";s:6:"1.0.19";s:2:"st";s:6:"stable";s:1:"l";s:9:"Go to url";s:1:"m";s:12:"magentoadmin";s:1:"s";s:56:"A Blog build from scratch to work seamlessly in magento.";s:1:"d";s:134:"Blog for magento.
+
+Shows posts with comments.
+Comments can be auto approved or moderated by admin.
+
+Categories. Tags.
+
+Plus much more.";s:2:"da";s:19:"2010-02-27 15:55:06";s:1:"n";s:4:"None";s:1:"f";s:6:"529313";s:1:"g";s:63:"http://connect.magentocommerce.com/community/get/AW_Blog-1.0.19";s:1:"x";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:18:"package.1.0.19.xml";}}}

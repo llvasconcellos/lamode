@@ -1,0 +1,44 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:16:"TBT_Enhancedgrid";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:27:"Open Software License (OSL)";s:2:"lu";s:42:"http://opensource.org/licenses/osl-3.0.php";s:1:"s";s:95:"Adds some exciting customizable features to the back-end administration product mangement grid.";s:1:"d";s:5672:"<div style="border: 2px dotted; padding: 6px; font-size: 11pt; font-weight: bold; text-align: center; margin-top: 6px; margin-bottom: 12px; background-color: pink; width: 484px;">
+<div style="background-color: white;"><a href="http://www.GetSweetTooth.com">Sweet <span style="color: darkred;">Tooth</span> Points &amp; Rewards Loyalty Extension</a></div>
+for Magento</div>
+<h3>Features</h3>
+<p><strong>Full Product Search:</strong> Search for products just like a customer would and display the results in the products grid.  This is extremely handy when helping a customer find a product.  To clear a search filter, click on "Reset Filter". <strong>Grid Row Highlighter:</strong> Highlight a bunch of rows by dragging your cursor over the rows while holding CTRL.  Each highlighted row will be checked off.  This will apply to all grids (including the catalog grid). <strong>Catalog Grid Thumbnails/Images:</strong> Shows product thumbnail images in the catalog product grid in a very organized and maintainable manor. <strong>Persistent Catalog Grid Settings:</strong> Set the default page size, default sort, default columns to show, etc.  The settings will be stored in your Store Config so you can save some time. <strong>Mass Product Refresh:</strong> Loads and saves a bunch of products.  This was built to aid in addressing a data inconsistency issue <strong>Quick Export;</strong> Select the export to CSV action from the mass action drop down and it'll create a CSV with all the selected products and send it as a file to your browser. <strong>Custom Catalog Product Grid Columns:</strong> Lets you select which columns you want to see in the catalog product grid. For example, short description, long description, custom attributes, etc.  You will also be able to change and quickly view product images thumbnails here. <strong>Product Image Thumbnail Column:</strong> You will be able to view product image thumbnails in a neat column in the catalog grid.</p>
+<h3>Installation Instructions</h3>
+<p>This module should be fully plug and play. If you're using a custom back-end package/skin, which you're probably not, you should transfer over the layout tbt_enhancedgrid.xml and tbt/enhancedgrid templates folder to your own back-end package/skin. Make sure you clear your cache.  Logging in and logging back out may also be required.   When the module is enabled you will see an asterisk "*" beside the Catalog -&gt; Manage Products menu option. To turn off Enhanced Product Grid modify the app/etc/modules/TBT_Enhancedgrid.xml file and set the 'active' value to 'false'.  (note: Turning off module output is not the same thing and it will does not disable the module, rather it just disables output so you're left with a blank product management screen )</p>
+<h3>Road Map</h3>
+<p><em>Last updated on February 05, 2009.</em> - Quick-preview (on hover) for grid images. - Enhanced Customer Management Grid - Add quick-search support for Magento 1.4.  Currently the quick product searc feature is not available for Magento 1.4 users until further notice.</p>
+<h3>Change Log</h3>
+<p>February 10, 2010 - Version 1.2 <span style="text-decoration: underline;">beta</span></p>
+<ul class="r-menu-layer-list" style="margin-top: 0pt; margin-bottom: 8px;">
+<li>Added Magento 1.4 compatibility</li>
+<li>Made images in the grid maintain their proportions when the height attribute is smaller than or equal to the weight attribute as configured in the back-end image display config for the grid.</li>
+<li>Now rewrites Magento's existing product grid.  To turn off Enhanced Product Grid modify the app/etc/modules/TBT_Enhancedgrid.xml file and set the 'active' value to 'false'</li>
+<li>Fixed a column spacing issue that would even out the columns.  Now the NAME column takes any remaining column space.</li>
+<li>Removed some unneeded files.</li>
+<li>Changed the structure of the configuration section</li>
+</ul>
+<p>March 20, 2009 - Version 1.1 <span style="text-decoration: underline;">stable</span></p>
+<ul class="r-menu-layer-list" style="margin-top: 0pt; margin-bottom: 8px;">
+<li>Now compatible with Magento ver. 1.0.19870.6 up to <strong>1.2.1.2</strong></li>
+<li>Added support for columns that have "drop-down" values.</li>
+<li>Fixed bug that broke "add new product" url</li>
+<li>Fixed bug that broke "update attributes" url.</li>
+</ul>
+<p>January 10, 2009 and Earlier - Version 1.041 <span style="text-decoration: underline;">stable</span>January 11, 2009 - Version 1.05 <span style="text-decoration: underline;">stable</span></p>
+<ul class="r-menu-layer-list" style="margin-top: 0pt; margin-bottom: 8px;">
+<li>Now compatible with Magento ver. 1.0.19870.6 - 1.2.0.3</li>
+<li>Added some code comments</li>
+</ul>
+<p>January 10, 2009 and Earlier - Version 1.041 <span style="text-decoration: underline;">stable</span></p>
+<ul class="r-menu-layer-list" style="margin-top: 0pt; margin-bottom: 8px;">
+<li>Fixed harmony with installing Mass Product Relater</li>
+<li>Refactored some internal codeAdded TBT Configuration comment</li>
+<li>Moved out of beta</li>
+<li>Fixed "Fatal error: Call to a member function getBaseCurrency() on a non-object in /www/mur.lv/www.mur.lv/app/code/community/TBT/Enhancedgrid/Block/Catalog/Product/Grid.php on line 421 " by fixing a currency issue.</li>
+<li>Corrected grid exporting.</li>
+<li>Removed printing of the page size ("20" printed above).</li>
+<li>Fixed bug that breaks all other grid searching.</li>
+<li>Changed a default configuration setting to hide image URLs by default.</li>
+<li>Fixed problem where JS were not being included</li>
+<li>Fixed bug that resized images incorrectly after they've been hidden and redisplayed.</li>
+</ul>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:43:"/Chiara_PEAR_Server_REST/r/TBT_Enhancedgrid";}}}

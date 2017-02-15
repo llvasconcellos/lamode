@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <bannerslider_index_index>
+        <reference name="content">
+            <block type="bannerslider/bannerslider" name="bannerslider" template="bannerslider/bannerslider.phtml" />
+        </reference>
+    </bannerslider_index_index>
+</layout> 

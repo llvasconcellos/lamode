@@ -1,0 +1,247 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+	$_type = $_helper->productAttribute($_product, $_product->getTypeID(), 'type');
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Idea by:  Nic Wolfe -->
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+function popUp(URL) {
+day = new Date();
+id = day.getTime();
+eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=650,height=580,left = 245,top = 155');");
+}
+// End -->
+</script>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+
+
+    <div class="product-essential">
+                <div class="share">            
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                <a class="addthis_button_tweet"></a>
+                <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4d496e2b28adb723"></script>
+                <!-- AddThis Button END -->
+            </div>
+    <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="product-shop">
+            <div class="product-name">
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </div>
+            
+            <?php 
+            
+            
+            $attributes = $_product->getAttributes();
+	        foreach ($attributes as $attribute) {
+	        	
+	            if ($attribute->getIsVisibleOnFront() && !in_array($attribute->getAttributeCode(), $excludeAttr)) {
+	
+	                $value = $attribute->getFrontend()->getValue($_product);
+	
+	                // TODO this is temporary skipping eco taxes
+	                if (is_string($value)) {
+	                    if (strlen($value) && $_product->hasData($attribute->getAttributeCode())) {
+	                        if ($attribute->getFrontendInput() == 'price') {
+	                            $value = Mage::app()->getStore()->convertPrice($value,true);
+	                        } else {
+	                            $value = $this->htmlEscape($value);
+	                        }
+	                        $data[$attribute->getAttributeCode()] = array(
+	                           'label' => $attribute->getFrontend()->getLabel(),
+	                           'value' => $value,
+	                           'code'  => $attribute->getAttributeCode()
+	                        );
+	                    }
+	                }
+	            }
+	        }
+            ?>
+             <div id="fabricante-produto">
+            	<?php 
+	        	if(array_key_exists('marca', $data))
+					if ($_product->getData('marca'))
+            			echo $data['marca']['value'];
+		        ?>
+			</div>
+
+            <?php if ($this->canEmailToFriend()): ?>
+                <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+            <?php endif; ?>
+
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+            <?php echo $this->getChildHtml('alert_urls') ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('extrahint') ?>
+
+            <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                            <!--<span class="or"><?php echo $this->__('OR') ?></span>-->
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('addto') ?>
+                </div>
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php else:?>
+                <?php echo $this->getChildHtml('addto') ?>
+            <?php endif; ?>
+
+            <?php /* descricao rapida descri��o r�pida resumo if ($_product->getShortDescription()):?>
+                <div class="short-description">
+                    <h2><?php echo $this->__('Quick Overview') ?></h2>
+                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                </div>
+            <?php endif; */ ?>
+            
+            <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+				<?php if($alias == 'additional') echo($html); ?>
+			<?php endforeach; ?>
+			<?php if($_type != 'grouped'){?>
+            <div style="clear:both">
+            	<?php echo $this->getChildHtml('info_tabs') ?>
+            </div>
+            <?php 
+			}
+			
+			if($_product->type_id == "simple"){
+				$parentId = $_product->loadParentProductIds()->getData('parent_product_ids');
+				foreach($parentId as $parent){
+					$pai = Mage::getModel('catalog/product')->load($parent);
+					if($pai->getTypeId() == 'grouped'){
+						echo('<div class="volta-colecao"><a href="' . $pai->getProductUrl() . '"><< Voltar para o Look</a></div>');
+					}
+					elseif($pai->getTypeId() == 'configurable'){
+						echo('<div class="other-sizes"><a href="' . $pai->getProductUrl() . '"><< Conheça outras opções de cor e tamanho para este produto</a></div>');
+					}
+				}
+			}
+			
+            echo $this->getChildHtml('other');?>
+
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+
+        </div>
+
+        <div class="product-img-box">
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+        
+            <div class="descrition-right">
+				<?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html){ 
+                        if($alias == 'additional') continue;
+                        ?>
+                        <?php if ($_type != 'grouped') { ?>
+                        <div class="box-collateral <?php echo "box-{$alias}"?>">
+                            <?php if ($title = $this->getChildData($alias, 'title')):?>
+                            <h2><?php echo $this->escapeHtml($title); ?></h2>
+                            <?php endif; ?>
+                            <?php echo $html; ?>
+                        </div> 
+                        <?php } ?>
+                <?php } 
+                if($_type == 'grouped'){ ?>
+                	<div class="volta-colecao"><a href="javascript: history.back();" title="Voltar">&lt; Ver outras composi&ccedil;&otilde;es</a></div>
+                <?php } ?>
+			</div>
+
+
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+        <div class="all-options">
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+        </div>
+        <?php endif;?>
+                <div class="clearer"></div>
+    </form>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(){
+                    if (this.validator.validate()) {
+                            this.form.submit();
+                    }
+            }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    </div>
+	<?php if($_type != 'simple'){ ?>
+    	<div class="product-collateral">
+    
+<?php /*foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+       <?php if($alias == 'additional') echo($html); ?>
+<?php endforeach;?>
+<?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+        <div class="box-collateral <?php echo "box-{$alias}"?>">
+<?php endforeach;*/ ?>
+            <div class="infos-add">
+            <?php echo $this->getChildHtml('upsell_products') ?>
+            <?php 
+            $reviews =  $this->getChildHtml('reviews');
+            if(strlen($reviews) > 0){
+                echo $reviews;
+                echo $this->getReviewsSummaryHtml($_product, false, true);
+            }
+            ?>
+            <?php echo $this->getChildHtml('product_additional_data') ?>
+            </div>
+        </div>
+    <?php } ?> 
+    </div>
+
+</div>
+

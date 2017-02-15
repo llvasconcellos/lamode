@@ -1,0 +1,1 @@
+s:296:"a:1:{s:8:"required";a:3:{s:3:"php";a:2:{s:3:"min";s:5:"5.0.0";s:3:"max";s:10:"5.99999999";}s:13:"pearinstaller";a:1:{s:3:"min";s:5:"1.6.2";}s:7:"package";a:4:{s:4:"name";s:16:"TBT_Enhancedgrid";s:7:"channel";s:37:"connect.magentocommerce.com/community";s:3:"min";s:3:"1.1";s:3:"max";s:3:"1.2";}}}";

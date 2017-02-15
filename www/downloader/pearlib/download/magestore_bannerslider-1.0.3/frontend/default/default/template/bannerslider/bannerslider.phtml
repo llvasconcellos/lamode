@@ -1,0 +1,53 @@
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('banner/ajaxtabs.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('banner/banner.css');?>" media="all" />
+<?php
+	$bannerCollection = Mage::getModel('bannerslider/bannerslider')->getCollection();
+	$configData = Mage::getStoreConfig('bannerslider');
+	$i = 0;
+?>
+<div class="slide-container">
+	<div class="slide-show" id="slide-images">		
+		<div id="pettabs" class="indentmenu">
+			<ul>
+		<?php
+			foreach($bannerCollection as $banner):
+				$i++;
+		?>
+				<li><a href="#" rel="tab<?php echo $i;?>" <?php if ($i == 1) { echo 'class="selected"'; }?>><?php echo $i;?></a></li>
+		<?php
+			endforeach;
+		?>
+			</ul>
+		</div>
+		<div style="width:240px;text-align:justify;padding: 5px; margin-bottom:1em"> 
+			<?php
+			$i = 0;
+			foreach ($bannerCollection as $banner):
+				$i++;
+			?>
+			<div id="tab<?php echo $i;?>" class="tabcontent">				
+				<a href="<?php echo $banner['weblink'];?>">
+				<img title="<?php echo $banner['title']?>" alt="<?php echo $banner['title']?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $banner['filename']?>" alt="" style="width:442px; height:232px;"/>				
+				<?php if ($configData['settings']['show_description'] == '1'):?>
+				<div class="banner_content"><p><?php echo $banner['content']; ?></p></div>
+				<?php endif;?>
+				</a>				
+			</div>
+			<?php
+			endforeach;
+			?>								
+		</div>
+	</div>
+</div>
+<?php	
+	$timeDelay = $configData['settings']['time_delay'] * 1000;
+?>
+<script type="text/javascript">
+	<?php
+		echo 'var delay = ' . $timeDelay . ';';
+	?>
+	var mypets=new ddtabcontent("pettabs");
+	mypets.setpersist(true);
+	mypets.setselectedClassTarget("link");
+	mypets.init(delay);
+</script>

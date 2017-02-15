@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+    	<report>
+    		<children>
+		        <noixcorreios translate="title" module="reports">
+		            <title>NOIX Correios</title>
+		            <sort_order>200</sort_order>
+		            <children>
+		            	<calculos translate="title" module="reports">
+		            		<title>Relatório de cálculos de frete</title>
+		            		<action>noixcorreios/adminhtml_relatorios/calculosfrete</action>
+		            	</calculos>
+		            </children>
+		        </noixcorreios>
+	        </children>
+        </report>
+    </menu>
+</config>

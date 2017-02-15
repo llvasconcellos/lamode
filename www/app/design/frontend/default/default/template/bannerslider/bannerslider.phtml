@@ -1,0 +1,134 @@
+<?php
+
+	$bannerCollection = Mage::getModel('bannerslider/bannerslider')->getCollection();
+	$i = 1;
+
+?>
+<!--link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('banner/banner.css');?>" media="all" /-->
+<div id="slider">
+	<div class="slidercontrolwr">
+		<div class="slidercontrol">
+			<!-- <a href="#" class="aprev" title="Previous" onclick="my_glider.previous();return false;">Previous</a> -->
+			<a href="#" class="astop" title="Stop" onclick="my_glider.stop();return false">Stop</a>
+			<a href="#" class="aplay" title="Play" onclick="my_glider.start();return false">Start</a>
+			<!-- <a href="#" class="anext" title="Next" onclick="my_glider.next();return false">next</a> -->
+		</div>
+	</div>
+	<div class="scroller">
+		<div class="content">
+<?php foreach ($bannerCollection as $banner): ?>
+			<div class="section" id="section<?php echo $i++; ?>">
+            <div class="bg_slides_top"></div>
+				<a href="<?php echo $banner['weblink']; ?>" title="<?php echo $banner['title']; ?>">
+					<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $banner['filename']; ?>" alt="<?php echo $banner['title']; ?>" />
+				</a>
+            <div class="bg_slides_btn"></div>
+			</div>
+<?php endforeach; ?>
+		</div>
+	</div>
+</div>
+<!--script src="<?php echo $this->getSkinUrl('banner/glider.js');?>" type="text/javascript"></script-->
+<script type="text/javascript" charset="utf-8">
+	var my_glider = new Glider('slider', {duration: 2.0, autoGlide: true, frequency: 5, initialSection: 'section1'});
+</script>
+<?php return; ?>
+
+
+<?php
+
+	
+	$i = 0;
+	$j = 0;
+	
+?>
+<style type="text/css">
+.slideshow {
+	display: block;
+	height: 232px;
+	overflow: hidden;
+}
+.slideshow .item {
+	position: absolute;
+}
+.slideshow .banner_content {
+	background: white;
+}
+</style>
+<div class="slideshow">
+<?php foreach ($bannerCollection as $banner): ?>
+	<div class="item">
+		<a href="<?php echo $banner['weblink'];?>">
+			<img title="<?php echo $banner['title']?>" alt="<?php echo $banner['title']?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $banner['filename']?>" alt="" style="width:442px; height:232px;"/>
+			<?php if ($configData['settings']['show_description']!= '1'): ?>
+				<div class="banner_content"><p><?php echo $banner['content']; ?></p></div>
+			<?php endif;?>
+		</a>
+	</div>
+<?php endforeach; ?>
+</div>
+<script type="text/javascript">
+var stopAuto = false;
+var imgs = $$('.slideshow .item');
+function slide (visible) {
+	if (visible.length > 1) {
+		visible.last().fade({
+			duration: .4
+		});
+	} else {
+		imgs.last().appear({
+			duration: .4,
+			afterFinish: function() {
+				imgs.slice(0,imgs.length-1).invoke('show');
+			}
+		});
+	}
+}
+setInterval(function() {
+	if (stopAuto == true) {
+		return;
+	}
+	var visible = imgs.findAll(function(img) {
+		return img.visible();
+	});
+	slide(visible);
+}, 3000);
+</script>
+<?php return; ?>
+
+
+
+
+
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('banner/ajaxtabs.js') ?>"></script>
+
+<?php
+	$bannerCollection = Mage::getModel('bannerslider/bannerslider')->getCollection();
+	$configData = Mage::getStoreConfig('bannerslider');
+	$i = 0;
+?>
+<div class="slide-container">
+	<div class="slide-show" id="slide-images">		
+		<div id="pettabs" class="indentmenu">
+			<ul>
+
+			</ul>
+		</div>
+		<div style="width:240px;text-align:justify;padding: 5px; margin-bottom:1em"> 
+								
+		</div>
+	</div>
+</div>
+<?php	
+	$timeDelay = $configData['settings']['time_delay'] * 1000;
+?>
+<script type="text/javascript">
+	<?php
+		echo 'var delay = 1000;';
+	?>
+	var mypets=new ddtabcontent("pettabs");
+	mypets.setpersist(true);
+	mypets.setselectedClassTarget("link");
+	mypets.init(delay);
+</script>

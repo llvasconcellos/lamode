@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indexa - Pagamento Digital Payment Module
+ *
+ * @title      Magento -> Custom Payment Module for Pagamento Digital (Brazil)
+ * @category   Payment Gateway
+ * @package    Indexa_PagamentoDigital
+ * @author     Gabriel Zamprogna -> desenvolvimento [at] indexainternet [dot] com  [dot] br
+ * @copyright  Copyright (c) 2009 Indexa
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Indexa_PagamentoDigital>
+            <version>0.1.0</version>          
+        </Indexa_PagamentoDigital>
+    </modules>
+    <global>
+        <models>
+            <pagamentodigital>
+                <class>Indexa_PagamentoDigital_Model</class>
+                <resourceModel>pagamentodigital_mysql4</resourceModel>
+            </pagamentodigital>
+            <pagamentodigital_mysql4>
+                <class>Indexa_PagamentoDigital_Model_Mysql4</class>
+                <entities>
+                    <api_debug><table>pagamentodigital_api_debug</table></api_debug>
+                </entities>
+            </pagamentodigital_mysql4>
+        </models>
+        <resources>
+            <pagamentodigital_setup>
+                <setup>
+                    <module>Indexa_PagamentoDigital</module>
+                    <class>Indexa_PagamentoDigital_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </pagamentodigital_setup>
+            <pagamentodigital_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </pagamentodigital_write>
+            <pagamentodigital_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </pagamentodigital_read>
+        </resources>
+		<blocks>
+            <pagamentodigital><class>Indexa_PagamentoDigital_Block</class></pagamentodigital>
+        </blocks>
+	    <helpers>
+	      <pagamentodigital><class>Indexa_PagamentoDigital_Helper</class></pagamentodigital>
+	    </helpers>
+    </global>
+    <frontend>
+        <secure_url>
+            <pagamentodigital_standard>/pagamentodigital/standard</pagamentodigital_standard>
+        </secure_url>   
+        <routers>
+            <pagamentodigital>
+                <use>standard</use>
+                <args>
+                    <module>Indexa_PagamentoDigital</module>
+                    <frontName>Indexa_PagamentoDigital</frontName>
+                </args>
+            </pagamentodigital>
+        </routers>
+        <translate>
+            <modules>
+                <pagamentodigital>
+                    <files>
+                        <default>indexa_pagamentodigital.csv</default>
+                    </files>
+                </pagamentodigital>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <pagamentodigital>
+                    <file>indexa_pagamentodigital.xml</file>
+                </pagamentodigital>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <pagamentodigital>
+                    <files>
+                        <default>indexa_pagamentodigital.csv</default>
+                    </files>
+                </pagamentodigital>
+            </modules>
+        </translate>        
+    </adminhtml>
+
+    <default>
+         <payment>
+             <pagamentodigital_standard>
+                  <active>0</active>
+                  <model>Indexa_PagamentoDigital_Model_Standard</model>
+                  <order_status>pending</order_status>
+                  <title>Pagamento Digital</title>
+                  <allowspecific>1</allowspecific>
+				  <retorno>http://www.urldoseusite.com.br/index.php/Indexa_PagamentoDigital/standard/success/</retorno>
+            </pagamentodigital_standard>
+        </payment>
+    </default>
+</config>

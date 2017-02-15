@@ -1,0 +1,9 @@
+<!--@subject Bem-vindo, {{var name}} @-->
+<!--@vars
+{"htmlescape var=$name":"Recipient Name",
+"var product_url":"Url for Product",
+"var product_name":"Product Name",
+"var message":"Sender Message"}
+@-->
+<p><a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}" border="0"/></a></p>
+Ol&aacute;, {{htmlescape var=$name}}<br /><br />Por favor, confira em <a href="{{var product_url}}">{{var product_name}}</a><br /><br />{{var message}}<br /><br />

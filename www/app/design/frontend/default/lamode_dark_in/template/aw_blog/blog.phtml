@@ -1,0 +1,52 @@
+<style type="text/css">
+.col2-right-layout .col-main {
+    width: 692px;
+}
+</style>
+<?php $posts = $this->getPosts(); ?>
+<?php foreach ($posts as $post): ?>
+<div class="postWrapper">
+     <div class="postTitle">
+        <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle();?></a></h2>
+		<h3><?php echo $post->getCreatedTime(); ?></h3>
+    </div>
+                        <div class="share">            
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                <a class="addthis_button_tweet"></a>
+                <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4d496e2b28adb723"></script>
+                <!-- AddThis Button END -->
+            </div>
+    <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+	
+	<?php echo $this->getBookmarkHtml($post) ?>
+                    <div class="share">            
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                <a class="addthis_button_tweet"></a>
+                <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4d496e2b28adb723"></script>
+                <!-- AddThis Button END -->
+            </div>
+	<div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
+	<div class="postDetails">
+		<?php if($this->getCommentsEnabled()): ?>
+		<?php echo $post->getCommentCount(); ?> <a href="<?php echo $post->getAddress(); ?>#commentBox" >Coment&aacute;rios</a> | 
+		<?php endif; ?>
+		<?php $postCats = $post->getCats(); ?>
+		<?php if(!empty($postCats)):?>
+			<?php echo Mage::helper('blog')->__('Posted in');?>
+			<?php foreach($postCats as $title=>$url): ?>
+				<a href="<?php echo $url; ?>"><?php echo $title; ?></a> 
+			<?php endforeach;?> 
+        <?php else:?>
+        	 <?php echo Mage::helper('blog')->__('Posted');?>
+        <?php endif;?><?php echo$this->__("By");?> <?php echo $post->getUser(); ?></div>
+</div>
+<?php endforeach; ?> 
+<?php $this->getPages(); ?>

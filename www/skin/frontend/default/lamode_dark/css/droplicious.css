@@ -1,0 +1,67 @@
+
+/* Droplicous code, change to your liking */
+#dropnav ul.licious{
+	text-align:left;
+	width:120px;
+	background:#670081;
+	color:white;
+	margin:0;
+	padding:0;
+	margin-top:5px;
+	position:absolute;
+	left:0px;
+	/*opacity:.90;
+	filter:alpha(opacity=90);*/
+	border:none;
+}
+
+/* ie bs */
+
+html>body #dropnav ul.licious{
+	position:absolute;	
+	top:10px;
+}
+#dropnav ul.licious a:hover{
+	position:relative;
+	color:#333 !important;
+	background-color:white;
+	background:#d5e8ff url(../images/bkg_block-layered1.png) 0 50% repeat;
+}
+#dropnav ul.licious a{
+	position:relative;
+	z-index:999;
+	font-weight:normal;
+	margin:0;
+	padding:5px 0 5px 10px;
+	background:none;
+	color:#FFF !important;
+}
+/*
+#dropnav li a:hover{
+	color:white;
+}*/
+#dropnav li a{
+	font-weight:bold;
+	text-decoration:none;
+	color:white;
+	padding:0px 10px 0px 10px;
+	background:#670081;
+	text-shadow:none;
+}
+#dropnav{
+	position:relative;
+	width:100%;
+	list-style:none;
+	margin:0 auto;
+	padding:0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#dropnav li{
+ 	position:relative;
+ 	display:inline;
+	margin:0;
+	padding:0;
+}
+.drops{
+	color:white !important;	
+}

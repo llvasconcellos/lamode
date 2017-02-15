@@ -1,0 +1,86 @@
+.slide-container {
+	position:relative;	
+	width:520px;
+	
+	height:auto;
+	text-align:center;
+	margin:0px 0px 40px 0px;
+	padding-top:10px;
+}
+
+.slide-show{
+	background-position:center center;
+	background-repeat:no-repeat;
+	text-align:center;
+	height:260px;
+	width:520px;
+	position:relative;
+	left:10px;
+}
+
+.indentmenu{
+	font: bold 11px Arial;
+	width: 100%; /*leave this value as is in most cases*/
+}
+
+.indentmenu ul{
+	margin: 2px;
+	padding: 0;
+	float: left;
+	/* width: 80%; width of menu*/
+	background: transparent;
+}
+
+.indentmenu ul li{
+	display: inline;
+}
+
+.indentmenu ul li a{
+	float: left;
+	margin: 2px;
+	color: #000; /*text color*/
+	padding: 5px 11px;
+	text-decoration: none;
+	border: 1px solid #ccc;
+}
+
+.indentmenu ul li a:hover{
+	background:#ddd;
+}
+
+.indentmenu ul li a:visited{
+	color: #000;
+}
+
+.indentmenu ul li a.selected{
+	color: white !important;
+	padding-top: 6px; /*shift text down 1px*/
+	padding-bottom: 4px;
+	border: 1px solid #F85601;
+	background:#F85601;
+}
+
+.tabcontentstyle{ /*style of tab content container*/
+	border: 1px solid gray;
+	width: 450px;
+	margin-bottom: 1em;
+	padding: 10px;
+}
+
+.tabcontent{
+	display:none;
+}
+
+@media print {
+	.tabcontent {
+		display:block !important;
+	}
+}
+
+.banner_content {
+	width:430px;
+	left:10px;
+	top:220px;
+	position:absolute;
+	color:#A7C6DD;
+}

@@ -1,0 +1,286 @@
+<script>
+
+Product.MyModule = Class.create();
+Product.MyModule.prototype = {
+
+    initialize: function(config){
+        this.config     = config;
+        this.taxConfig  = this.config.taxConfig;
+        this.settings   = $$('.super-attribute-select');
+        this.state      = new Hash();
+        this.priceTemplate = new Template(this.config.template);
+        this.prices     = config.prices;
+
+        this.settings.each(function(element){
+            Event.observe(element, 'change', this.configure.bind(this))
+        }.bind(this));
+
+        // fill state
+        this.settings.each(function(element){
+            var attributeId = element.id.replace(/[a-z]*/, '');
+            if(attributeId && this.config.attributes[attributeId]) {
+                element.config = this.config.attributes[attributeId];
+                element.attributeId = attributeId;
+                this.state[attributeId] = false;
+            }
+        }.bind(this))
+
+        // Init settings dropdown
+        var childSettings = [];
+        for(var i=this.settings.length-1;i>=0;i--){
+            var prevSetting = this.settings[i-1] ? this.settings[i-1] : false;
+            var nextSetting = this.settings[i+1] ? this.settings[i+1] : false;
+            if(i==0){
+                this.fillSelect(this.settings[i])
+            }
+            else {
+                this.settings[i].disabled=true;
+            }
+            $(this.settings[i]).childSettings = childSettings.clone();
+            $(this.settings[i]).prevSetting   = prevSetting;
+            $(this.settings[i]).nextSetting   = nextSetting;
+            childSettings.push(this.settings[i]);
+        }
+
+        // try retireve options from url
+        var separatorIndex = window.location.href.indexOf('#');
+        if (separatorIndex!=-1) {
+            var paramsStr = window.location.href.substr(separatorIndex+1);
+            this.values = paramsStr.toQueryParams();
+            this.settings.each(function(element){
+                var attributeId = element.attributeId;
+                element.value = (typeof(this.values[attributeId]) == 'undefined')? '' : this.values[attributeId];
+                this.configureElement(element);
+            }.bind(this));
+        }
+    },
+
+    configure: function(event){
+        var element = Event.element(event);
+        this.configureElement(element);
+    },
+
+    configureElement : function(element) {
+        this.reloadOptionLabels(element);
+        if(element.value){
+            this.state[element.config.id] = element.value;
+            if(element.nextSetting){
+                element.nextSetting.disabled = false;
+                this.fillSelect(element.nextSetting);
+                this.resetChildren(element.nextSetting);
+            }
+        }
+        else {
+            this.resetChildren(element);
+        }
+        this.reloadPrice();
+//      Calculator.updatePrice();
+    },
+
+    resetChildren : function(element){
+        if(element.childSettings) {
+            for(var i=0;i<element.childSettings.length;i++){
+                element.childSettings[i].selectedIndex = 0;
+                element.childSettings[i].disabled = true;
+                if(element.config){
+                    this.state[element.config.id] = false;
+                }
+            }
+        }
+    },
+
+    reloadOptionLabels: function(element){
+        var selectedPrice;
+        if(element.options[element.selectedIndex].config){
+            selectedPrice = parseFloat(element.options[element.selectedIndex].config.price)
+        }
+        else{
+            selectedPrice = 0;
+        }         
+        
+        var prevConfig = false;
+        if(element.prevSetting){
+            prevConfig = element.prevSetting.options[element.prevSetting.selectedIndex];
+        }
+
+        for(var i=0;i<element.options.length;i++){
+            if(element.options[i].config){
+                element.options[i].text  = this.getOptionLabel(element.options[i].config, prevConfig);
+            //    element.options[i].text = this.getOptionLabel(element.options[i].config, element.options[i].config.price-selectedPrice);
+            }
+        }
+    },
+
+/**********************************************/
+    fillSelect: function(element){
+        var attributeId = element.id.replace(/[a-z]*/, '');
+        var options = this.getAttributeOptions(attributeId);
+        this.clearSelect(element);
+        element.options[0] = new Option(this.config.chooseText, '');
+
+        var prevConfig = false;
+        if(element.prevSetting){
+            prevConfig = element.prevSetting.options[element.prevSetting.selectedIndex];
+        }
+
+        if(options) {
+            var index = 1;
+            for(var i=0;i<options.length;i++){
+                var allowedProducts = [];
+                if(prevConfig) {
+                    for(var j=0;j<options[i].products.length;j++){
+                        if(prevConfig.config.allowedProducts && prevConfig.config.allowedProducts.indexOf(options[i].products[j])>-1){
+                            allowedProducts.push(options[i].products[j]);
+                        }
+                    }
+                } else {
+                    allowedProducts = options[i].products.clone();
+                }
+
+                if(allowedProducts.size()>0){
+                    options[i].allowedProducts = allowedProducts;
+                    element.options[index] = new Option(this.getOptionLabel(options[i], prevConfig), options[i].id);
+                    element.options[index].config = options[i];
+                    if(options[i].products.length == 1){
+                    	if(options[i].qty[options[i].products[0]] == ' - Esgotado')
+                    		element.options[index].disabled = true;
+                    }
+                    index++;
+                }
+            }
+        }
+    },
+
+/**********************************************/
+    getOptionLabel: function(option, prevConfig){
+        var price = parseFloat(price);
+        var str = option.label;
+        if(prevConfig){
+            for(var j=0;j<option.products.length;j++){
+                if(prevConfig.config.allowedProducts
+                    && prevConfig.config.allowedProducts.indexOf(option.products[j])>-1){
+                   str+= '  ' + prevConfig.config.qty[option.products[j]] + ' ';
+                }
+            }
+        }
+        else{
+            if(option.products.size() == 1){
+                str+= '  ' + option.qty[option.products[0]] + ' ';
+            }
+            else{
+            	var x = 0;
+            	for(qty in option.qty) {
+            		var temp = option.qty[qty].split('(');
+            		if(temp.length > 1){
+	            		temp = temp[1].split(' ');
+	            		x = x + Number(temp[0]);
+	            	}
+            	}
+            	str += ' - (' + x + ' em estoque)'
+            }
+        }
+        return str;
+    },
+
+    formatPrice: function(price, showSign){
+        var str = '';
+        price = parseFloat(price);
+        if(showSign){
+            if(price<0){
+                str+= '-';
+                price = -price;
+            }
+            else{
+                str+= '+';
+            }
+        }
+
+        var roundedPrice = (Math.round(price*100)/100).toString();
+
+        if (this.prices && this.prices[roundedPrice]) {
+            str+= this.prices[roundedPrice];
+        }
+        else {
+            str+= this.priceTemplate.evaluate({price:price.toFixed(2)});
+        }
+        return str;
+    },
+
+    clearSelect: function(element){
+        for(var i=element.options.length-1;i>=0;i--){
+            element.remove(i);
+        }
+    },
+
+    getAttributeOptions: function(attributeId){
+        if(this.config.attributes[attributeId]){
+            return this.config.attributes[attributeId].options;
+        }
+    },
+
+    reloadPrice: function(){
+        var price = 0;
+        for(var i=this.settings.length-1;i>=0;i--){
+            var selected = this.settings[i].options[this.settings[i].selectedIndex];
+            if(selected.config){
+                price += parseFloat(selected.config.price);
+            }
+        }
+
+        optionsPrice.changePrice('config', price);
+        optionsPrice.reload();
+
+        return price;
+
+        if($('product-price-'+this.config.productId)){
+            $('product-price-'+this.config.productId).innerHTML = price;
+        }
+        this.reloadOldPrice();
+    },
+
+    reloadOldPrice: function(){
+        if ($('old-price-'+this.config.productId)) {
+
+            var price = parseFloat(this.config.oldPrice);
+            for(var i=this.settings.length-1;i>=0;i--){
+                var selected = this.settings[i].options[this.settings[i].selectedIndex];
+                if(selected.config){
+                    price+= parseFloat(selected.config.price);
+                }
+            }
+            if (price < 0)
+                price = 0;
+            price = this.formatPrice(price);
+
+            if($('old-price-'+this.config.productId)){
+                $('old-price-'+this.config.productId).innerHTML = price;
+            }
+
+        }
+    }
+}
+
+ </script>
+ 
+
+
+
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <dl>
+    <?php foreach($_attributes as $_attribute): ?>
+        <dt><label><?php echo $_attribute->getLabel() ?><span class="required">&nbsp;*</span></label></dt>
+        <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+          <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+            <option><?php echo $this->__('Choose an Option...') ?></option>
+          </select>
+        </dd>
+    <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+        var spConfig = new Product.MyModule(<?php echo $this->getJsonConfig() ?>);
+    </script>
+<?php endif;?>

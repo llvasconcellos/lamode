@@ -1,0 +1,52 @@
+.prozoom-image { margin-bottom: 10px; text-decoration: none; }
+.prozoom-image:hover { text-decoration: none; }
+#image { }
+.more-views li a { border:2px solid #ddd; float:left; width:56px; height:56px; overflow:hidden;}
+.more-views li.active a { border-color: #999; }
+
+.zoom-title {
+    background:#999;
+    color:#FFFFFF;
+    font-family:Tahoma;
+    font-size:11px;
+    left:0;
+    top:0;
+    padding:2px;
+    position:absolute;
+    text-align:center;
+    width:100%;
+    z-index:10000;
+}
+.zoom-lens {
+    background-color:#FFF;
+    border: 1px solid #c4c4c4;
+    overflow:hidden;
+    z-index:10;
+    position: absolute;
+}
+.zoom-lens img { border:0 none; }
+.spinner, .informer {
+    border:1px solid #CCCCCC;
+    background: #fff no-repeat 43px 30px;
+    color:#333333;
+    font-family:Tahoma;
+    font-size:12px;
+    height:43px;
+    width:90px;
+    left:3px;
+    top:3px;
+    opacity:0.8;
+    filter: alpha(opacity=80);
+    padding:8px;
+    position:absolute;
+    text-align:center;
+    text-decoration:none;
+    z-index:10;
+}
+.spinner { background-image: url(../images/prozoom_loader.gif); }
+.zoom-window { background-color:#FFFFFF; border:1px solid #999999; }
+#largeimage { position:absolute; z-index:10000; }
+#largeimage .close { position:absolute; top: 5px; right:5px; padding: 7px 4px;
+    text-decoration: none; background: url(../images/prozoom_close.gif) no-repeat 0 0;
+    width: 24px; height: 24px; text-indent: -9999px; }
+.zoom_ieframe { }

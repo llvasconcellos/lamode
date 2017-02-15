@@ -1,0 +1,18 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:22:"Magestore_BannerSlider";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:27:"Open Software License (OSL)";s:2:"lu";s:42:"http://opensource.org/licenses/osl-3.0.php";s:1:"s";s:50:"Add ability to show a slider of image on home page";s:1:"d";s:1200:"If you find this extension useful, make us a donation:
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="10451488">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+Ability to show a slider of images on magento pages.
+Images can add/remove from admin panel with information: title, url, description.
+Slider switch images after a certain time which can be fill up in admin.
+Also, there's a tab link where can choose image to view.
+To make this slider show on home page, you have to put this line of code in homepage cms in admin:
+{{block type='bannerslider/bannerslider' template='bannerslider/bannerslider.phtml'}}
+Also, I made some special style when working on homepage, so you need to do necessary customization to fit your page.
+Feel free to contact me for features you want.
+Uninstall old version and install new version.
+It should work now.
+Sorry for the bug.";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:49:"/Chiara_PEAR_Server_REST/r/Magestore_BannerSlider";}}}

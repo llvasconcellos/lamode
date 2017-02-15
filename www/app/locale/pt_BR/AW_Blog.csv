@@ -1,0 +1,119 @@
+﻿Action,Ação
+Add Category,Adicionar Categoria
+Add Comment,Adicionar Comentário
+Add Post,Adicionar Post
+Advanced Options,Opções Avançadas
+Advanced Post Options,Opções Avançadas de Post
+Approve,Aprovar
+Are you sure?,Tem certeza?
+Auto Approve Comments,Auto Aprovar Comentários
+Blog,Blog
+Blog Comment Manager,Gerenciador de comentários do Blog
+Blog Manager,Gerenciador do Blog
+Blog Post Manager,Gerenciador de Post do Blog
+Blog Post Options,Opções de Post do Blog
+Blog Settings,Configurações do Blog
+Blog Title,Título de Blog
+Categories,Categorias
+Category,Categoria
+Category does not exist,Categoria não existente
+Category Information,Informações da Categoria
+Category Manager,Gerenciador de Categoria
+Change status,Alterar Status
+click here,clique aqui
+Comment,Comentário
+Comment Information,Informações de Comentário
+Comment was approved,Comentário foi aprovado
+Comment was successfully deleted,Comentário removido com sucesso
+Comment was successfully saved,Comentário gravado com sucesso
+Comment was unapproved,Comentário foi rejeitado
+Comments,Comentários
+Comments are not enabled.,Comentários estão desativados.
+Content,Conteúdo
+Created,Criado
+Delete,Remover
+Delete Category,Remover Categoria
+Delete Comment,Remover Comentário
+Delete Post,Remover Post
+Description,Descrição
+Disabled,Desabilitado
+Email Address,Endereço de Email
+Edit,Editar
+Edit Category '%s',Editar Categoria '%s'
+Edit Comment By '%s',Editar Comentário de '%s'
+Edit Post '%s',Editar Post '%s'
+eg: YYYY-MM-DD HH:MM:SS Leave blank to use current date,ex: YYYY-MM-DD HH:MM:SS Deixe em branco para usar a data atual
+Email,Email
+Enable Blog RSS Feed,Enable Blog RSS Feed
+Enable Comments,Enable Comments
+Enable Footer Link,Enable Footer Link
+Enable Left Menu,Enable Left Menu
+Enable Right Menu,Enable Right Menu
+Enable Top Link,Enable Top Link
+Enabled,Enabled
+Frequency,Frequency
+Go to Home Page,Go to Home Page
+Google Sitemap,Google Sitemap
+Hidden,Hidden
+Home,Home
+ID,ID
+Identifier,Identifier
+Keywords,Keywords
+Leave blank to use current user name,Leave blank to use current user name
+Login Required to Comment,Login Required to Comment
+Manage Categories,Manage Categories
+Manage Comments,Manage Comments
+Manage Posts,Manage Posts
+Manage Products,Manage Products
+Meta Data,Meta Data
+Meta Description,Meta Description
+Meta Keywords,Meta Keywords
+Name,Name
+No Posts in this Category.,No Posts in this Category.
+Page Layout,Page Layout
+Please select categories,Please select categories
+Please select comment(s),Please select comment(s)
+Please select post(s),Please select post(s)
+Post was successfully deleted,Post was successfully deleted
+Post does not exist,Post does not exist
+Post Identifier already exist.,Post Identifier already exist.
+Post Identifier cannot consist only of numbers.,Post Identifier cannot consist only of numbers.
+Post information,Post information
+Post was successfully deleted,Post was successfully deleted
+Post was successfully saved,Post was successfully saved
+Posted By,Posted By
+Poster,Poster
+Posts Per Page,Posts Per Page
+Priority,Priority
+Recent Posts,Recent Posts
+Return to,Return to
+Route to Blog,Route to Blog
+RSS Feed Image,RSS Feed Image
+RSS Posts to Show,RSS Posts to Show
+Save Category,Save Category
+Save Comment,Save Comment
+Save Post,Save Post
+Show Breadcrumbs,Show Breadcrumbs
+Sort Order,Sort Order
+Status,Status
+Store View,Store View
+Submit Comment,Submit Comment
+Summary Character Count,Summary Character Count
+Title,Title
+to log in,to log in
+Total of %d comment(s) were successfully approved,Total of %d comment(s) were successfully approved
+Total of %d comment(s) were successfully unapproved,Total of %d comment(s) were successfully unapproved
+Total of %d comments(s) were successfully deleted,Total of %d comments(s) were successfully deleted
+Total of %d record(s) were successfully deleted,Total of %d record(s) were successfully deleted
+Total of %d record(s) were successfully updated,Total of %d record(s) were successfully updated
+Unable to find category to save,Unable to find category to save
+Unable to find comment to save,Unable to find comment to save
+Unable to find post to save,Unable to find post to save
+"Unable to submit your comment. Please, try again later","Unable to submit your comment. Please, try again later"
+Unapprove,Unapprove
+Updated,Updated
+User,User
+You must be logged in to comment.,You must be logged in to comment.
+You must be logged in to post a comment.,You must be logged in to post a comment.
+Your comment has been submitted and is awaiting approval.,Your comment has been submitted and is awaiting approval.
+Your comment has been submitted.,Your comment has been submitted.

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addItem" ifconfig="prozoom/general/enabled"><type>skin_css</type><name>css/prozoom.css</name></action>
+            <action method="addItem" ifconfig="prozoom/general/enabled"><type>skin_js</type><name>js/prototype.prozoom.js</name></action>
+        </reference>
+        <reference name="product.info.media">
+            <action method="setTemplate" ifconfig="prozoom/general/enabled"><template>prozoom/media.phtml</template></action>
+        </reference>
+    </catalog_product_view>
+
+	
+    <review_product_list>
+        <reference name="head">
+            <action method="addItem" ifconfig="prozoom/general/enabled"><type>skin_css</type><name>css/prozoom.css</name></action>
+            <action method="addItem" ifconfig="prozoom/general/enabled"><type>skin_js</type><name>js/prototype.prozoom.js</name></action>
+        </reference>
+        <reference name="product.info.media">
+            <action method="setTemplate" ifconfig="prozoom/general/enabled"><template>prozoom/media.phtml</template></action>
+        </reference>
+    </review_product_list>	
+	
+</layout>

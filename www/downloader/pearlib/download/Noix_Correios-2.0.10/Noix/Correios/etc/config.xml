@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Noix_Correios>
+            <version>2.0.10</version>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Noix_Correios>
+    </modules>
+
+    <global>
+        <models>
+            <noix_correios>
+                <class>Noix_Correios_Model</class>
+                <resourceModel>noix_correios_mysql4</resourceModel>
+            </noix_correios>
+            
+            <noix_correios_mysql4>
+            	<class>Noix_Correios_Model_Mysql4</class>
+            	<entities>
+            		<relatorio_calculosfrete>
+            			<table>noix_correios_calculos</table>
+            		</relatorio_calculosfrete>
+            	</entities>	
+            </noix_correios_mysql4>
+        </models>
+        
+        <blocks>
+            <noix_correios>
+                <class>Noix_Correios_Block</class>
+            </noix_correios>
+        </blocks>
+        
+        <sales>
+            <shipping>
+                <carriers>
+                    <noix_correios>
+                        <class>Noix_Correios_Model_Carrier</class>
+                    </noix_correios>
+                </carriers>
+            </shipping>
+        </sales>
+        
+        <helpers>
+            <noix_correios>
+                <class>Noix_Correios_Helper</class>
+            </noix_correios>
+        </helpers>
+        
+        <resources>
+            <noix_correios_setup>
+                <setup>
+                    <module>Noix_Correios</module>
+                </setup>
+                
+                <connection>
+                    <use>directory_setup</use>
+                </connection>
+            </noix_correios_setup>  
+                      
+            <noix_correios_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </noix_correios_write>
+            
+            <noix_correios_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </noix_correios_read>
+        </resources>
+    </global>
+
+    <default>
+        <carriers>
+            <noix_correios>
+                <active>0</active>
+                <model>Noix_Correios_Model_Carrier</model>
+                <title>Correios</title>
+                <name>Correios</name>
+                <tiposdefrete></tiposdefrete>
+                <formato>1</formato>
+                <mostrarprazoentrega>1</mostrarprazoentrega>
+                <acrescimoprazoentrega>0</acrescimoprazoentrega>
+                <textoprazoentrega> - Entrega em até %d dias úteis</textoprazoentrega>
+                <taxamanuseio>0</taxamanuseio>
+                <msgerro>Esse método de envio está fora do ar. Por favor, entre em contato conosco.</msgerro>
+            </noix_correios>
+        </carriers>
+    </default>
+    
+    <admin>
+        <routers>
+            <noixcorreios>
+                <use>admin</use>
+                <args>
+                    <module>Noix_Correios</module>
+                    <frontName>noixcorreios</frontName>
+                </args>
+            </noixcorreios>
+        </routers>
+    </admin>
+    
+    <!-- <frontend>
+        <routers>
+            <noix_correios>
+                <use>standard</use>
+                <args>
+                    <module>Noix_Correios</module>
+                    <frontName>noixcorreios</frontName>
+                </args>
+            </noix_correios>
+        </routers>
+    </frontend> -->
+
+    <adminhtml>
+    	<layout>
+    		<updates>
+    			<noixcorreios>
+                    <file>noixcorreios.xml</file>
+                </noixcorreios>
+    		</updates>
+    	</layout>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <shipping>
+                                            <children>
+                                                <noix_correios translate="title">
+                                                    <title>NOIX CORREIOS Section</title>
+                                                </noix_correios>
+                                            </children>
+                                        </shipping>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

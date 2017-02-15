@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Gr
+ * @package     Gr_Deepzoom
+ * @copyright   Copyright (c) 2010 groupeReflect (http://www.groupereflect.net)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Gr_Deepzoom>
+            <version>0.6.1</version>
+        </Gr_Deepzoom>
+    </modules>
+    <global>
+        <models>
+            <grdeepzoom>
+                <class>Gr_Deepzoom_Model</class>
+            </grdeepzoom>
+            <catalog>
+            	<rewrite>
+            		<product_attribute_backend_media>Gr_Deepzoom_Model_Product_Attribute_Backend_Media</product_attribute_backend_media>
+            	</rewrite>
+            </catalog>
+        </models>
+        <blocks>
+            <grdeepzoom><class>Gr_Deepzoom_Block</class></grdeepzoom>
+        </blocks>
+        <helpers>
+            <grdeepzoom><class>Gr_Deepzoom_Helper</class></grdeepzoom>
+        </helpers>
+        <resources>
+            <grdeepzoom_setup>
+            	<setup>
+                    <module>Gr_Deepzoom</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </grdeepzoom_setup>
+        </resources>
+    </global>
+    <default>
+        <catalog>
+            <grdeepzoom>
+                <is_active>0</is_active>
+                <only_admin>1</only_admin>
+                <autoHideControls>1</autoHideControls>
+                <imagePath>images/gr/deepzoom/</imagePath>
+                <zoomPerClick>2</zoomPerClick>
+                <zoomPerScroll>1.2</zoomPerScroll> 
+                <zoomPerSecond>2</zoomPerSecond>
+                <minZoomImageRatio>0.8</minZoomImageRatio> 
+                <maxZoomPixelRatio>2</maxZoomPixelRatio>
+                <imageLoaderLimit>2</imageLoaderLimit> 
+            </grdeepzoom>
+        </catalog>
+	</default>
+	<adminhtml>
+        <translate>
+            <modules>
+                <Gr_Deepzoom>
+                    <files>
+                        <default>gr/Gr_Deepzoom.csv</default>
+                    </files>
+                </Gr_Deepzoom>
+            </modules>
+        </translate>
+    </adminhtml>
+	<frontend>
+        <layout>
+            <updates>
+                <grdeepzoom>
+                    <file>gr/deepzoom.xml</file>
+                </grdeepzoom>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Gr_Deepzoom>
+                    <files>
+                        <default>gr/Gr_Deepzoom.csv</default>
+                    </files>
+                </Gr_Deepzoom>
+            </modules>
+        </translate>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <grdeepzoom_addHandle>
+                        <type>singleton</type>
+                        <class>grdeepzoom/observer</class>
+                        <method>beforeLoadLayout</method>
+                    </grdeepzoom_addHandle>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+	</frontend>
+</config>

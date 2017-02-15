@@ -1,0 +1,20 @@
+a:14:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.release";s:18:"xsi:schemaLocation";s:81:"http://pear.php.net/dtd/rest.release     http://pear.php.net/dtd/rest.release.xsd";}s:1:"p";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:49:"/Chiara_PEAR_Server_REST/p/pedroteixeira_correios";}s:8:"_content";s:22:"PedroTeixeira_Correios";}s:1:"c";s:37:"connect.magentocommerce.com/community";s:1:"v";s:5:"4.1.0";s:2:"st";s:6:"stable";s:1:"l";s:20:"GNU General Public L";s:1:"m";s:12:"magentoadmin";s:1:"s";s:82:"Módulo de cálculo de PAC, Sedex, E-Sedex, Sedex 10, Sedex Hoje e Sedex a Cobrar.";s:1:"d";s:952:"Versão 4.1.0 do módulo de cálculo de frete para Magento.
+
+Módulo totalmente compatível com o novo WebService dos Correios e agora realizando apenas uma consulta para todos os serviços.
+
+Também é integrado com o WebService de cálculo de frete da Locaweb e hoje conta com os seguintes serviços:
+
+- Sedex Sem Contrato
+- Sedex Com Contrato
+- E-Sedex Com Contrato
+- PAC Sem Contrato
+- PAC Com Contrato
+- Sedex 10
+- Sedex HOJE
+- Sedex a Cobrar
+
+Conta com identificação de erros dos Correios, mão própria, aviso de recebimento, valor declarado, captura do prazo de entrega dos Correios, adicionar mais dias ao prazo dos Correios, identifica o volume dos produtos por atributo e Tracking em tempo real.
+
+Na nova versão conta com apenas uma chamada para todos os serviços, integração total com as regras de desconto, integração com a nova versão do Magento e correção de alguns bugs.
+
+Mais informações em http://www.pteixeira.com.br﻿.";s:2:"da";s:19:"2010-08-10 22:44:54";s:1:"n";s:82:"Módulo de cálculo de PAC, Sedex, E-Sedex, Sedex 10, Sedex Hoje e Sedex a Cobrar.";s:1:"f";s:5:"11911";s:1:"g";s:77:"http://connect.magentocommerce.com/community/get/PedroTeixeira_Correios-4.1.0";s:1:"x";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:17:"package.4.1.0.xml";}}}

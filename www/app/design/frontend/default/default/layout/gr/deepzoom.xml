@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Gr
+ * @package     Gr_Deepzoom
+ * @copyright   Copyright (c) 2010 groupeReflect (http://www.groupereflect.net)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+-->
+<layout version="0.1.0">
+    <grdeepzoom_catalog_product_view>
+    	 <reference name="head" >
+    	 	<action method="addItem"><type>skin_js</type><name>js/gr/deepzoom/seadragon-0-8-4-min.js</name></action>
+    	 	<action method="addItem"><type>skin_js</type><name>js/gr/deepzoom/seadragon-ui-0.6.0-min.js</name></action>
+    	 	<action method="addItem"><type>skin_css</type><name>css/gr/deepzoom/seadragon-0.6.0.css</name></action>
+        </reference>
+        <!-- <remove name="product.info.media" />  -->
+        <reference name="product.info">
+        	<block type="catalog/product_view_media" name="product.info.media.deepzoom" as="media" template="gr/deepzoom/product/view/media.phtml"/>
+        </reference>
+    </grdeepzoom_catalog_product_view>
+</layout>

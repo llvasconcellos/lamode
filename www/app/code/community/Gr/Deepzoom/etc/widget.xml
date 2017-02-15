@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Gr
+ * @package     Gr_Deepzoom
+ * @copyright   Copyright (c) 2010 groupeReflect (http://www.groupereflect.net)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<widgets>
+    <grdeepzoom_catalog_product_image type="grdeepzoom/product_widget_image" translate="name description" module="grdeepzoom">
+        <name>Catalog Product Image with Deepzoom</name>
+        <description>Show image to a Specified Product</description>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </id_path>
+            <width translate="label">
+                <visible>1</visible>
+                <label>Width</label>
+                <type>text</type>
+                <value>265</value>
+            </width>
+            <height translate="label">
+                <visible>1</visible>
+                <label>Height</label>
+                <type>text</type>
+                <value>265</value>
+            </height>
+            <background_color translate="label">
+                <visible>1</visible>
+                <label>Background Color</label>
+                <type>text</type>
+                <value>#fff</value>
+            </background_color>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>gr/deepzoom/product/widget/image.phtml</value>
+            </template>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+            </cache_lifetime>
+        </parameters>
+    </grdeepzoom_catalog_product_image>
+    <grdeepzoom_catalog_product_image_gallery type="grdeepzoom/product_widget_image_gallery" translate="name description" module="grdeepzoom">
+        <name>Catalog Product  Image Gallery with Deepzoom</name>
+        <description>Show image gallery to a Specified Product</description>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </id_path>
+            <width translate="label">
+                <visible>1</visible>
+                <label>Width</label>
+                <type>text</type>
+                <value>265</value>
+            </width>
+            <height translate="label">
+                <visible>1</visible>
+                <label>Height</label>
+                <type>text</type>
+                <value>265</value>
+            </height>
+            <background_color translate="label">
+                <visible>1</visible>
+                <label>Background Color</label>
+                <type>text</type>
+                <value>#fff</value>
+            </background_color>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>gr/deepzoom/product/widget/gallery.phtml</value>
+            </template>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+            </cache_lifetime>
+        </parameters>
+    </grdeepzoom_catalog_product_image_gallery>
+</widgets>

@@ -1,0 +1,11 @@
+<fieldset class="form-list">
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+        <li>
+            <img style="margin: 10px 0px 10px 20px" src="<?php echo $this->getSkinUrl('images/pagseguro/banner-pagseguro.gif'); ?>" alt="Pagseguro" title="Pagseguro" />
+        </li>
+        <li>
+            <?php echo $this->__('Você será redirecionado para o Pagseguro quando finalizar a compra.') ?>
+        </li>
+    </ul>
+</fieldset>

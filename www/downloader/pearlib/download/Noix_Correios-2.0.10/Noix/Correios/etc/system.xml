@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <noix_correios translate="label" module="shipping">
+                    <label>Correios - NOIX</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Habilitado</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <title translate="label">
+                            <label>Título</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                        </title>
+
+                        <tiposdefrete translate="label">
+                            <label>Tipos de frete</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>noix_correios_model_tipofrete</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Observação: Caso o serviço seja com contrato, verifique com os correios quais os códigos de serviço você está utilizando.</comment>
+                        </tiposdefrete>
+
+                        <codigoadministrativo translate="label">
+                            <label>Código administrativo(ECT)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Obrigatório se serviço for com contrato</comment>
+                        </codigoadministrativo>
+
+                        <senha translate="label">
+                            <label>Senha</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Obrigatório se serviço for com contrato</comment>
+                        </senha>
+
+                        <formato translate="label">
+                            <label>Formato da encomenda(incluindo embalagem)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>noix_correios_model_formato</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                        </formato>
+
+                        <mostrarprazoentrega translate="label">
+                            <label>Exibe prazo de entrega</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                        </mostrarprazoentrega>
+
+                        <textoprazoentrega translate="label">
+                            <label>Texto do prazo de entrega</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                        </textoprazoentrega>
+
+                        <acrescimoprazoentrega translate="label">
+                            <label>Acréscimo de dias ao prazo de entrega</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                        </acrescimoprazoentrega>
+
+                        <taxamanuseio translate="label">
+                            <label>Taxa de manuseio</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Se for usado o símbolo % será realizado um cálculo de porcentagem em cima do valor do frete, caso contrario será considerado como um valor fixo.</comment>
+                        </taxamanuseio>
+
+                        <msgerro translate="label">
+                            <label>Mensagem de erro</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                        </msgerro>
+
+                        <nomeatributoaltura translate="label">
+                            <label>Atributo Altura</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Nome do atributo utilizado para guardar a altura do produto(em centímetros). Consulte a documentação para maiores detalhes.</comment>
+                        </nomeatributoaltura>
+
+                        <nomeatributolargura translate="label">
+                            <label>Atributo Largura</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Nome do atributo utilizado para guardar a largura do produto(em centímetros). Consulte a documentação para maiores detalhes.</comment>
+                        </nomeatributolargura>
+
+                        <nomeatributocomprimento translate="label">
+                            <label>Atributo Comprimento</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_webstore>1</show_in_webstore>
+                            <comment>Nome do atributo utilizado para guardar o comprimento do produto(em centímetros). Consulte a documentação para maiores detalhes.</comment>
+                        </nomeatributocomprimento>
+                    </fields>
+                </noix_correios>
+            </groups>
+        </carriers>
+    </sections>
+</config>
